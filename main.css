@@ -1,0 +1,60 @@
+/**
+ * @name Unlimited Void Background Fix
+ * @author blood09
+ * @version 1.0.0
+ * @description Universal background injector for Gojo Satoru theme.
+ */
+
+/* --- UNIVERSAL BACKGROUND INJECTOR --- */
+:root {
+  /* Your GitHub Image Link */
+  --blood09-bg: url('https://raw.githubusercontent.com/Opyyrrd/discord/main/1371543.jpeg');
+  
+  /* Brightness Fixes */
+  --bg-overlay: rgba(0, 0, 0, 0.4); 
+  --bg-blur: 0px;
+}
+
+/* This forces the background onto the very bottom layer of the app */
+#app-mount, 
+.app_a01fb1, 
+.bg_d4e33b, 
+.container_ee217e, 
+.chat_a7d72e,
+.content_f75fb0 {
+  background: var(--blood09-bg) center/cover no-repeat fixed !important;
+}
+
+/* This makes the UI panels transparent so the image actually shows through */
+.themedBackground__74017,
+.container__2637a,
+.members_c8ffbb,
+.nowPlayingColumn_c273d0,
+.sidebar_5e434,
+.container__133bf {
+  background: transparent !important;
+}
+
+/* Optional: Adds a dark tint so you can still read white text */
+#app-mount::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: var(--bg-overlay);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* --- THE SIX EYES HUD --- */
+.panels_a4d4d1::after {
+  content: "  DOMAIN: UNLIMITED VOID  |  SYSTEM: STABLE  ";
+  position: fixed;
+  bottom: 5px; right: 20px;
+  color: #8a2eff;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 5px #8a2eff;
+  opacity: 0.8;
+}
