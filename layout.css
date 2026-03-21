@@ -203,3 +203,176 @@ button,
   font-family: "JetBrains Mono", monospace;
   color: #808080;
 }
+/* =========================
+   FAKE EDITOR TABS (TOP BAR)
+   ========================= */
+
+.title_f75fb0::after {
+  content: "  Main.java   |   Messages.java   |   ChatUtils.kt";
+  margin-left: 20px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: #888;
+}
+
+/* =========================
+   BLINKING CURSOR EFFECT
+   ========================= */
+
+@keyframes blinkCursor {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.textArea__74017::after {
+  content: "|";
+  margin-left: 2px;
+  animation: blinkCursor 1s infinite;
+  color: #a9b7c6;
+}
+
+/* =========================
+   CODE-LIKE MESSAGE COLORS
+   ========================= */
+
+/* strings */
+.messageContent_f9f2ca span {
+  color: #6a8759;
+}
+
+/* usernames override (keywords) */
+.username_f9f2ca {
+  color: #cc7832 !important;
+}
+
+/* mentions = functions */
+.mention {
+  color: #ffc66d !important;
+}
+
+/* links = blue */
+.anchor_edefb8 {
+  color: #589df6 !important;
+}
+
+/* =========================
+   INDENTATION LIKE CODE
+   ========================= */
+
+.messageContent_f9f2ca {
+  padding-left: 10px;
+}
+
+/* =========================
+   FILE EXPLORER STYLE DMs
+   ========================= */
+
+.privateChannels_e6b769 .interactive__972a0::before {
+  content: "📄 ";
+  opacity: 0.7;
+}
+
+/* =========================
+   ACTIVE FILE HIGHLIGHT
+   ========================= */
+
+.interactive__972a0.selected_bf202d {
+  background-color: #214283 !important;
+}
+
+/* =========================
+   GUTTER BACKGROUND (LINE NUM AREA)
+   ========================= */
+
+.messageListItem__5126c::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 40px;
+  height: 100%;
+  background: #313335;
+  z-index: -1;
+}
+
+/* =========================
+   HOVER LINE HIGHLIGHT
+   ========================= */
+
+.messageListItem__5126c:hover {
+  background-color: #323232 !important;
+}
+
+/* =========================
+   BETTER SCROLLBAR (IDE STYLE)
+   ========================= */
+
+::-webkit-scrollbar-track {
+  background: #2b2b2b;
+}
+
+/* =========================
+   TOOLTIP = CODE POPUP
+   ========================= */
+
+.tooltip__382e7 {
+  background: #3c3f41 !important;
+  border: 1px solid #555;
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* =========================
+   REMOVE AVATARS (MORE IDE LOOK)
+   ========================= */
+
+.avatar_f9f2ca {
+  display: none;
+}
+
+/* =========================
+   COMPACT MESSAGES (LIKE CODE LINES)
+   ========================= */
+
+.messageListItem__5126c {
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+}
+
+/* =========================
+   FAKE ERROR / WARNING COLORS
+   ========================= */
+
+/* red for errors */
+.messageContent_f9f2ca:has(.emoji) {
+  color: #ff6b68;
+}
+
+/* =========================
+   TERMINAL STYLE INPUT BAR
+   ========================= */
+
+.channelTextArea__74017 {
+  border-top: 1px solid #555;
+}
+
+/* =========================
+   STATUS BAR (BOTTOM FAKE)
+   ========================= */
+
+.form_f75fb0::after {
+  content: " IntelliJ IDEA Community Edition  |  UTF-8  |  LF  |  Java ";
+  position: absolute;
+  bottom: -25px;
+  left: 10px;
+  font-size: 11px;
+  color: #888;
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* =========================
+   SMOOTH TRANSITIONS
+   ========================= */
+
+* {
+  transition: background-color 0.12s ease, color 0.12s ease;
+}
