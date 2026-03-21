@@ -1,92 +1,46 @@
-/**
- * @name Unlimited Void Custom
- * @author blood09
- * @version 1.0.0
- * @description A fully custom Gojo Satoru experience.
- */
+/* =========================
+   GOJO CUSTOM BACKGROUND ENGINE
+   ========================= */
 
-/* --- THE INFINITY CORE --- */
-:root {
-  --gojo-image: url('https://raw.githubusercontent.com/Opyyrrd/discord/main/1371543.jpeg');
-  --hollow-purple: #8a2eff;
-  --cursed-blue: #3574f0;
-  --cursed-red: #ff4b5c;
-  --void-bg: rgba(0, 0, 0, 0.6);
-  --glass-blur: 10px;
+/* Root: ensure we have a container for our background */
+#gojo-background-engine {
+  position: fixed !important;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: 0; /* behind everything */
+  pointer-events: none; /* so clicks pass through */
+  background: url("https://raw.githubusercontent.com/Opyyrrd/discord/main/1371543.jpeg") center center / cover no-repeat fixed;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-/* --- BACKGROUND INJECTOR --- */
-#app-mount {
-  background: var(--gojo-image) center/cover no-repeat fixed !important;
+/* Optional animated overlay: Gojo energy */
+#gojo-background-engine::after {
+  content: "";
+  position: absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: radial-gradient(circle, rgba(91,110,255,0.2) 0%, transparent 80%);
+  animation: gojo-energy 5s ease-in-out infinite alternate;
 }
 
-/* Translucency for all main layers */
-.app_a01fb1, .bg_d4e33b, .container_ee217e, .chat_a7d72e, 
-.sidebar_5e434, .container__2637a, .members_c8ffbb {
+@keyframes gojo-energy {
+  0% { transform: scale(1) rotate(0deg); opacity: 0.2; }
+  50% { transform: scale(1.05) rotate(15deg); opacity: 0.25; }
+  100% { transform: scale(1) rotate(-15deg); opacity: 0.2; }
+}
+
+/* Make all Discord panels transparent to reveal the engine */
+*,
+*:before,
+*:after,
+.app-2q1iLe,
+.container-1gi2h3,
+.layers-3iHuy,
+.theme-dark,
+.sidebar-1tnWFu,
+.wrapper-6tG7U1,
+.chat-3bRxxu,
+.members-3YRI2h {
   background: transparent !important;
+  backdrop-filter: none !important;
 }
-
-/* --- THE SIX EYES HUD --- */
-
-/* 1. Glowing Unread Markers */
-.unread_d21fd6 {
-  background: var(--hollow-purple) !important;
-  box-shadow: 0 0 12px var(--hollow-purple);
-}
-
-/* 2. Cursed Speech Vibration (on Mentions/Bold) */
-.mention, strong {
-  display: inline-block;
-  animation: cursed-vibe 0.3s infinite ease-in-out;
-  color: var(--hollow-purple) !important;
-  text-shadow: 0 0 5px rgba(138, 46, 255, 0.5);
-}
-@keyframes cursed-vibe {
-  0%, 100% { transform: translate(0,0); }
-  25% { transform: translate(0.5px, 0.5px); }
-  75% { transform: translate(-0.5px, -0.5px); }
-}
-
-/* 3. Terminal Style Input */
-.scrollableContainer_d0696b {
-  background: var(--void-bg) !important;
-  border: 1px solid var(--hollow-purple) !important;
-  backdrop-filter: blur(var(--glass-blur));
-  border-radius: 8px;
-}
-.placeholder_a552a4::before {
-  content: "blood09@void:~$ ";
-  color: #49ab5a;
-  font-family: "JetBrains Mono", monospace;
-  font-weight: bold;
-}
-
-/* 4. Message Technique Borders */
-.message_d5deea {
-  border-left: 4px solid transparent;
-  transition: 0.2s;
-}
-.message_d5deea:hover {
-  background: rgba(255, 255, 255, 0.05) !important;
-}
-.message_d5deea:nth-child(odd) { border-left-color: var(--cursed-blue); }
-.message_d5deea:nth-child(even) { border-left-color: var(--cursed-red); }
-
-/* 5. Custom Domain Footer */
-.panels_a4d4d1::after {
-  content: " [ DOMAIN EXPANSION: UNLIMITED VOID ] ";
-  position: fixed;
-  bottom: 0; left: 0; width: 100%; height: 20px;
-  background: rgba(138, 46, 255, 0.15);
-  backdrop-filter: blur(5px);
-  color: #fff;
-  font-family: monospace;
-  font-size: 10px;
-  text-align: center;
-  line-height: 20px;
-  letter-spacing: 4px;
-  border-top: 1px solid var(--hollow-purple);
-}
-
-/* Clean up */
-.wordmark_a934d8 { display: none; }
